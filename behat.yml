@@ -1,4 +1,4 @@
-default:
+default: &default
     context:
         class: rn\Behat\FeatureContext
     extensions:
@@ -8,9 +8,15 @@ default:
                 env: test
         Behat\MinkExtension\Extension:
             default_session: 'symfony2'
-            base_url: "http://travis.dev/app_test.php"
+            base_url: "http://sf2playground.dev/app_test.php"
             browser_name: "firefox"
             selenium2:
                 browser: "firefox"
                 wd_host: http://127.0.0.1:4444/wd/hub
         SensioLabs\Behat\PageObjectExtension\Extension: ~
+
+travis:
+    <<: *default
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: "http://sf2playground.dev:8000/app_test.php"

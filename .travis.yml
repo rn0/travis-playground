@@ -1,10 +1,10 @@
 language: php
 
 env:
-  - PROJECT_NAME=travis
+  global:
+    - PROJECT_NAME=sf2playground
 
 php:
-  - 5.3
   - 5.4
   - 5.5
 
@@ -15,12 +15,19 @@ install:
 before_script:
   - composer install -n --prefer-dist -v
 
-  - php app/console server:run $PROJECT_NAME.dev:80 > /dev/null &
-
   - sh -e /etc/init.d/xvfb start
   - export DISPLAY=:99.0
-  - java -jar selenium-server-standalone-2.35.0.jar > /dev/null &
+  - java -jar selenium-server-standalone-2.35.0.jar > app/logs/selenium.log &
+  - sleep 5
+
+  - php app/console server:run "$PROJECT_NAME.dev:8000" -vvv > app/logs/server.log &
 
 script:
   - ./bin/phpspec run -f pretty
-  - ./bin/behat --no-snippets --no-paths --verbose --format=progress
+  - ./bin/behat --no-snippets --no-paths --verbose --format=progress --profile=travis
+
+after_failure:
+  - cat app/logs/server.log
+  - cat app/logs/dev.log
+  - cat app/logs/test.log
+  - cat app/logs/selenium.log
