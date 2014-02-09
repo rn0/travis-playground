@@ -1,0 +1,11 @@
+default:
+    context:
+        class: rn\Behat\FeatureContext
+    extensions:
+        Behat\Symfony2Extension\Extension:
+            mink_driver: true
+            kernel:
+                env: test
+        Behat\MinkExtension\Extension:
+            default_session: 'symfony2'
+        SensioLabs\Behat\PageObjectExtension\Extension: ~

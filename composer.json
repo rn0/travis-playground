@@ -21,7 +21,12 @@
         "incenteev/composer-parameter-handler": "~2.0"
     },
     "require-dev": {
-        "phpspec/phpspec": "2.0.*@dev"
+        "phpspec/phpspec": "2.0.*@dev",
+        "behat/behat": "~2.5",
+        "behat/symfony2-extension": "*",
+        "behat/mink-extension": "*",
+        "behat/mink-browserkit-driver":"*",
+        "sensiolabs/behat-page-object-extension": "*"
     },
     "scripts": {
         "post-install-cmd": [
