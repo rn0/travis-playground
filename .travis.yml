@@ -7,3 +7,8 @@ php:
 
 before_script: composer install -n
 
+script:
+  - composer self-update
+  - composer install -n --prefer-dist -v
+
+  - ./bin/phpspec run -f pretty

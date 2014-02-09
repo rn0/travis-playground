@@ -1,0 +1,3 @@
+rn_web_homepage:
+    pattern:  /
+    defaults: { _controller: rn_web.controller.default:indexAction }

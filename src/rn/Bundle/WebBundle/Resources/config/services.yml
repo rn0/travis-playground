@@ -1,0 +1,4 @@
+services:
+    rn_web.controller.default:
+        class: rn\Bundle\WebBundle\Controller\DefaultController
+        arguments: [@templating]

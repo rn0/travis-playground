@@ -1,0 +1,4 @@
+rn_web:
+    resource: "@rnWebBundle/Resources/config/routing.yml"
+    prefix:   /
+
