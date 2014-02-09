@@ -19,6 +19,6 @@ class FeatureContext extends PageObjectContext
      */
     public function iShouldSee($text)
     {
-        $this->getPage('Default Page')->hasContent($text);
+        expect($this->getPage('Default Page')->hasContent($text))->toBe(true);
     }
 }

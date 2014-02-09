@@ -5,8 +5,17 @@ php:
   - 5.4
   - 5.5
 
+install:
+  - wget http://selenium.googlecode.com/files/selenium-server-standalone-2.35.0.jar
+
 before_script:
   - composer install -n --prefer-dist -v
+
+  - php app/console server:run travis.dev:80 > /dev/null &
+
+  - sh -e /etc/init.d/xvfb start
+  - export DISPLAY=:99.0
+  - java -jar selenium-server-standalone-2.35.0.jar > /dev/null &
 
 script:
   - ./bin/phpspec run -f pretty

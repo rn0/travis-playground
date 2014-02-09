@@ -3,6 +3,11 @@ Feature:
   As a developer
   I need sample scenarios
 
-  Scenario:
+  Scenario: Show Hello World
     Given i am on the home page
     Then i should see "Hello world!"
+
+  @javascript
+  Scenario: Show Hello World from JS
+    Given i am on the home page
+    Then i should see "Hello JS!"
